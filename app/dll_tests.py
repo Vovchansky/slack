@@ -88,6 +88,20 @@ class TestDoubleLinkedList(unittest.TestCase):
         self.d_linked_list.unshift(4)
         self.assertEqual(str(self.d_linked_list), '[4, 5, 3, 2, 1]', "List [4, 5, 3, 2, 1]")
 
+    def first(self):
+        """First element of the list tests"""
+        self.assertEqual(self.d_linked_list.first(), None, "Should return None when initialized")
+        self.d_linked_list.unshift(1)
+        self.d_linked_list.unshift(5)
+        self.assertEqual(self.d_linked_list.first(), 5, "Should return 5 if the List is [5, 1]")
+
+    def last(self):
+        """Last element of the list tests"""
+        self.assertEqual(self.d_linked_list.last(), None, "Should return None when initialized")
+        self.d_linked_list.unshift(18)
+        self.d_linked_list.unshift(7)
+        self.assertEqual(self.d_linked_list.last(), 18, "Should return 18 if the List is [7, 18]")
+
 
 if __name__ == '__main__':
     unittest.main()

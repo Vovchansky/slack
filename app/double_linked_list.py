@@ -26,18 +26,15 @@ class DoubleLinkedList:
         return str(to_print)
 
     def push(self, elem=None):
-        """Add an elemant to the end of the list"""
-        if elem is None:
-            raise ValueError('Cannot add None item to the end of the list')
+        """Add an element to the end of the list"""
+        if not isinstance(elem, Item):
+            elem = Item(elem)
+        if self.head is None:
+            self.head = elem
         else:
-            if not isinstance(elem, Item):
-                elem = Item(elem)
-            if self.head is None:
-                self.head = elem
-            else:
-                self.tail.next_item = elem
-                elem.prev_item = self.tail
-            self.tail = elem
+            self.tail.next_item = elem
+            elem.prev_item = self.tail
+        self.tail = elem
 
     def pop(self):
         """Remove an element from the end of the list"""
@@ -53,19 +50,16 @@ class DoubleLinkedList:
 
     def unshift(self, elem=None):
         """Add an element to the beginning of the list"""
-        if elem is None:
-            raise ValueError('There is nothing to add to the list')
+        if not isinstance(elem, Item):
+            elem = Item(elem)
+        if self.head is None:
+            self.head = elem
+            self.tail = elem
         else:
-            if not isinstance(elem, Item):
-                elem = Item(elem)
-            if self.head is None:
-                self.head = elem
-                self.tail = elem
-            else:
-                new_head = elem
-                self.head.prev_item = new_head
-                new_head.next_item = self.head
-                self.head = new_head
+            new_head = elem
+            self.head.prev_item = new_head
+            new_head.next_item = self.head
+            self.head = new_head
 
     def shift(self):
         """Remove an element from the beginning of the list"""

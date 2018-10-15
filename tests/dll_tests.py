@@ -1,6 +1,6 @@
 """Unittest class"""
 import unittest
-from double_linked_list import DoubleLinkedList
+from app.double_linked_list import DoubleLinkedList
 
 
 class TestDoubleLinkedList(unittest.TestCase):
@@ -16,11 +16,6 @@ class TestDoubleLinkedList(unittest.TestCase):
         self.assertEqual(self.d_linked_list.head, None, "Initial HEAD should be None")
         self.assertEqual(self.d_linked_list.tail, None, "Initial TAIL should be None")
         self.assertEqual(self.d_linked_list.len(), 0, "Initial length should be zero")
-
-    def test_unshiift_exceptions(self):
-        """Empty unshift() test"""
-        with self.assertRaises(ValueError):
-            self.d_linked_list.unshift()
 
     def test_contains_exceptions(self):
         """Empty list contains() test"""
